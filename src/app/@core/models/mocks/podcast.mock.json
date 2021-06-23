@@ -14,8 +14,5 @@
   "website": "https://anchor.fm/alexa-stop-podcast?utm_source=listennotes.com&utm_campaign=Listen+Notes&utm_medium=website",
   "is_claimed": false,
   "type": "episodic",
-  "genre_ids": [
-    140,
-    127
-  ]
+  "genre_ids": [140, 127]
 }

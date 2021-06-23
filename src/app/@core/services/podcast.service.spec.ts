@@ -3,6 +3,7 @@ import { TestBed, waitForAsync } from "@angular/core/testing";
 import { of, throwError } from "rxjs";
 import { PodcastService } from "./podcast.service";
 import * as MockGenre from "@core/models/mocks/podcast-genre.mock.json";
+import * as MockPodcast from "@core/models/mocks/podcast.mock.json";
 
 describe('@core/PodcastService', () => {
   let service: PodcastService;
@@ -51,5 +52,20 @@ describe('@core/PodcastService', () => {
 
       expect(result$).not.toBeNull();
     })
+
+     it('should return the expected podcast object when call is successful', () => {
+       var testResult = [];
+       testResult.push((MockGenre as any).default);
+
+       httpClientSpy.get.and.returnValue(of(testResult));
+       const result$ = service.getPodcastDetails(MockPodcast.id);
+       result$.subscribe((result) => {
+         expect(result).not.toBeNull();
+         expect(typeof result).toBe(typeof {});
+         expect(result!.title).toEqual(MockPodcast.title);
+       });
+
+       expect(result$).not.toBeNull();
+     });
   })
 })
